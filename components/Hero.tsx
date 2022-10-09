@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
@@ -19,7 +20,7 @@ export default function Hero({}: Props) {
       <BackgroundCircles />
       <img
         className="relative rounded-full h-32 w-32 mx-auto object-cover"
-        src="https://previews.dropbox.com/p/thumb/ABpWnIWwWtKt_4e15inEhmKz9e9Rf4Iyb6MTxpUk5USnL22erWf68BOblcTAjtoQtdR9e-6kXhG1EMw51Gbcb2UYNRHCNYQs9VflyLjSAhkSzlGUDcEv_4daWWHAej9Y2E7fzRqtAdTmXKBvg7HSxkGnJKS-86kee6QKD-vp29dMPQj5fCjWu4dxd2arO2Bzl7TK2akJOyX94krx_v2MDFmwMrzZqOZhzam9ONxWRnakQyULRjrGyZ3cSg-UJO-XTxJSQ3Z52G592LUBQtZxzZQWzlpNQryMpupQu4vjWj7REdOdOQv7QHQcd7h4rx-U-c4uqCbyXHqGfb4uw_9kLciEdSyBgYWYOpdGeY6STnZciI2LKgHWmfLSvNyoJT15lBs/p.png"
+        src="https://previews.dropbox.com/p/thumb/ABqwfRxAxqZSMZOGTrHwL98XixsdJLP15qHuV-plhnnNv7-y_0JGkmtlZdrGOXx-fyxpuJv_xWFTi4ovQ0PAtunMr64-QqiznKbfqQCnFK6sPYYtM2Y0-84BGJC59GqcpVjqAqZiwFr4vDkyjca2buU91haFWW6BoS325Ut8K5Oc9_ZEqlZqxGnzK1-ua3c3lyqZQR2Pic3ExmVE46m3MyNidHDf6Qdi_y70bWXMSSavgsEJABgdiRgSvd4MjuO0qWqQXKSB7ebMbmhtAMPR12wL820natCghETioJuoOmDoMIHm66BE3dr24ZUvyZ3lreTvSdOAre5Z6zWfBCmXWF0a738KI9NGxZ6-7X2GiSIx70Fs5kndNb5zQDqyChB5l7c/p.png"
         alt=""
       />
       <div>
@@ -30,6 +31,20 @@ export default function Hero({}: Props) {
           <span className="mr-3">{text}</span>
           <Cursor cursorColor="#F7AB0A" />
         </h1>
+        <div className="pt-5">
+          <Link href="#about">
+            <button className="heroButton">About</button>
+          </Link>
+          <Link href="#Experience">
+            <button className="heroButton">Experience</button>
+          </Link>
+          <Link href="#Skills">
+            <button className="heroButton">Skills</button>
+          </Link>
+          <Link href="#Projects">
+            <button className="heroButton">Projects</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
