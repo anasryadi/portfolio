@@ -23,7 +23,7 @@ export default function Hero({}: Props) {
         src="https://previews.dropbox.com/p/thumb/ABqwfRxAxqZSMZOGTrHwL98XixsdJLP15qHuV-plhnnNv7-y_0JGkmtlZdrGOXx-fyxpuJv_xWFTi4ovQ0PAtunMr64-QqiznKbfqQCnFK6sPYYtM2Y0-84BGJC59GqcpVjqAqZiwFr4vDkyjca2buU91haFWW6BoS325Ut8K5Oc9_ZEqlZqxGnzK1-ua3c3lyqZQR2Pic3ExmVE46m3MyNidHDf6Qdi_y70bWXMSSavgsEJABgdiRgSvd4MjuO0qWqQXKSB7ebMbmhtAMPR12wL820natCghETioJuoOmDoMIHm66BE3dr24ZUvyZ3lreTvSdOAre5Z6zWfBCmXWF0a738KI9NGxZ6-7X2GiSIx70Fs5kndNb5zQDqyChB5l7c/p.png"
         alt=""
       />
-      <div>
+      <div className="z-20">
         <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px]">
           Software Engineer
         </h2>
