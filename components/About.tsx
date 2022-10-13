@@ -37,14 +37,7 @@ export default function About({ pageInfo }: Props) {
           <span className="underline decoration-[#F7AB0A]/50">little</span>{" "}
           background
         </h4>
-        <p className="text-lg">
-          Software Engineer with a background in computer science and
-          information technology. Driven by tackling complex problems and
-          breaking them down into various elements to decipher the best solution
-          for improvement. Leveraging my background knowledge in computer
-          science to approach each project with a unique approach and develop
-          applications that keep the user in mind.
-        </p>
+        <p className="text-lg">{pageInfo?.backgroundInformation}</p>
       </div>
     </motion.div>
   );
