@@ -36,16 +36,11 @@ export default function Header({ socials }: Props) {
             bgColor="transparent"
           />
         ))}
-        <SocialIcon
+        {/* <SocialIcon
           url="https://github.com/anasryadi"
           fgColor="gray"
           bgColor="transparent"
-        />
-        <SocialIcon
-          url="https://www.instagram.com/anasryadi/"
-          fgColor="gray"
-          bgColor="transparent"
-        />
+        /> */}
       </motion.div>
 
       <Link href="#contact">

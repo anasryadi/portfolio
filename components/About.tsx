@@ -1,9 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { PageInfo } from "../typings";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-export default function About({}: Props) {
+export default function About({ pageInfo }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
