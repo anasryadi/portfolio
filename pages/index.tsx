@@ -24,6 +24,11 @@ type Props = {
 };
 
 const Home = ({pageInfo, experiences, projects, skills, socials}: Props) => {
+  console.log(pageInfo)
+  console.log(experiences)
+  console.log(projects)
+  console.log(skills)
+  console.log(socials)
   return (
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
       <Head>
@@ -61,7 +66,6 @@ const Home = ({pageInfo, experiences, projects, skills, socials}: Props) => {
           <div className="flex items-center justify-center">
             <img
               className="h-10 w-10 rounded-full filter grayscale hover:grayscale-0 cursor-pointer"
-              // src="https://i.imgur.com/e2yvD6A.png"
               src="https://i.imgur.com/10lX0Zi.png"
               alt=""
             />
@@ -74,7 +78,8 @@ const Home = ({pageInfo, experiences, projects, skills, socials}: Props) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+// export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps = async () => {
   const pageInfo: PageInfo = await fetchPageInfo();
   const experiences: Experience[] = await fetchExperiences();
   const skills: Skill[] = await fetchSkills();
