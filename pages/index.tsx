@@ -1,4 +1,4 @@
-import type { GetStaticProps } from "next";
+import type { GetServerSideProps, GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import About from "../components/About";
@@ -8,6 +8,7 @@ import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
 import WorkExperience from "../components/WorkExperience";
+import { sanityClient } from "../sanity";
 import { Experience, PageInfo, Project, Skill, Social } from "../typings";
 import { fetchExperiences } from "../utils/fetchExperiences";
 import { fetchPageInfo } from "../utils/fetchPageInfo";
@@ -23,12 +24,12 @@ type Props = {
   socials: Social[];
 };
 
-const Home = ({pageInfo, experiences, projects, skills, socials}: Props) => {
-  console.log(pageInfo)
-  console.log(experiences)
-  console.log(projects)
-  console.log(skills)
-  console.log(socials)
+const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
+  console.log(pageInfo);
+  console.log(experiences);
+  console.log(projects);
+  console.log(skills);
+  console.log(socials);
   return (
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
       <Head>
@@ -78,13 +79,34 @@ const Home = ({pageInfo, experiences, projects, skills, socials}: Props) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-// export const getServerSideProps = async () => {
-  const pageInfo: PageInfo = await fetchPageInfo();
-  const experiences: Experience[] = await fetchExperiences();
-  const skills: Skill[] = await fetchSkills();
-  const projects: Project[] = await fetchProjects();
-  const socials: Social[] = await fetchSocial();
+export const getServerSideProps = async () => {
+  const pageInfoQuery = `
+*[_type == "pageInfo"][0]
+`;
+  const experienceQuery = `
+*[_type == "experience"] {
+  ...,
+  technologies[]->
+}
+`;
+  const skillQuery = `
+*[_type == "project"] {
+  ...,
+  technologies[]->
+}
+`;
+  const projectQuery = `
+*[_type == "skill"]
+`;
+  const socialQuery = `
+*[_type == "social"]
+`;
+
+  const pageInfo: PageInfo = await sanityClient.fetch(pageInfoQuery);
+  const experiences: Experience[] = await sanityClient.fetch(experienceQuery);
+  const skills: Skill[] = await sanityClient.fetch(skillQuery);
+  const projects: Project[] = await sanityClient.fetch(projectQuery);
+  const socials: Social[] = await sanityClient.fetch(socialQuery);
 
   return {
     props: {
@@ -94,9 +116,27 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       projects,
       socials,
     },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 10 seconds
-    revalidate: 10,
   };
 };
+
+// export const getStaticProps: GetStaticProps<Props> = async () => {
+//   const pageInfo: PageInfo = await fetchPageInfo();
+//   const experiences: Experience[] = await fetchExperiences();
+//   const skills: Skill[] = await fetchSkills();
+//   const projects: Project[] = await fetchProjects();
+//   const socials: Social[] = await fetchSocial();
+
+//   return {
+//     props: {
+//       pageInfo,
+//       experiences,
+//       skills,
+//       projects,
+//       socials,
+//     },
+//     // Next.js will attempt to re-generate the page:
+//     // - When a request comes in
+//     // - At most once every 10 seconds
+//     revalidate: 10,
+//   };
+// };
